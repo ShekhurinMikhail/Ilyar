@@ -30,8 +30,8 @@ public class UserServiceHiberImpl implements UserService {
     }
     @Transactional
     @Override
-    public void updateUser(int id, User updateuser) {
-        userDao.updateUser(id,updateuser);
+    public void updateUser(User updateuser) {
+        userDao.updateUser(updateuser);
     }
     @Transactional
     @Override

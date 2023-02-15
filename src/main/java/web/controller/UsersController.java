@@ -14,7 +14,7 @@ import web.DAO.UserDaoHiberImpl;
 import web.model.User;
 
 @Controller
-@RequestMapping("/users")
+@RequestMapping("/")
 public class UsersController {
 
     private final UserDaoHiberImpl userDaoHiberimpl;
@@ -23,45 +23,46 @@ public class UsersController {
     }
 
     @GetMapping()
-    public String ShowAllUsers(Model model) {
-        model.addAttribute("users",userDaoHiberimpl.showAllUsers());
-        return "showAllUsers";
+    public String ShowAllUsers() {
+//        model.addAttribute("users",userDaoHiberimpl.showAllUsers());
+//        return "showAllUsers";
+        return "hello";
     }
-    @GetMapping("/{id}")
-    public String ShowUserId(@PathVariable("id") int id, Model model) {
-        model.addAttribute("user", userDaoHiberimpl.showUserId(id));
-        return "showUser";
-    }
-    @GetMapping("/new")
-    public String newUser(@ModelAttribute("user") User user) {
-        return "newUser";
-    }
-    @PostMapping()
-    public String createUser(@ModelAttribute("user")  User user,
-                             BindingResult bindingResult) {
-        if (bindingResult.hasErrors())
-            return "newUser";
-        userDaoHiberimpl.saveUser(user);
-        return "redirect:/users";
-    }
-
-    @GetMapping("/{id}/edit")
-    public String edit(Model model, @PathVariable("id") int id) {
-        model.addAttribute("user", userDaoHiberimpl.showUserId(id));
-        return "edit";
-    }
-
-    @PatchMapping("/{id}")
-    public String updateUser(@ModelAttribute("user")  User user,
-                             BindingResult bindingResult,@PathVariable("id") int id) {
-        if (bindingResult.hasErrors())
-            return "edit";
-        userDaoHiberimpl.updateUser(id, user);
-        return "redirect:/users";
-    }
-    @DeleteMapping("/{id}")
-    public String deleteUser(@PathVariable("id") int id) {
-        userDaoHiberimpl.deleteUser(id);
-        return "redirect:/users";
-    }
+//    @GetMapping("/{id}")
+//    public String ShowUserId(@PathVariable("id") int id, Model model) {
+//        model.addAttribute("user", userDaoHiberimpl.showUserId(id));
+//        return "showUser";
+//    }
+//    @GetMapping("/new")
+//    public String newUser(@ModelAttribute("user") User user) {
+//        return "newUser";
+//    }
+//    @PostMapping()
+//    public String createUser(@ModelAttribute("user")  User user,
+//                             BindingResult bindingResult) {
+//        if (bindingResult.hasErrors())
+//            return "newUser";
+//        userDaoHiberimpl.saveUser(user);
+//        return "redirect:/users";
+//    }
+//
+//    @GetMapping("/{id}/edit")
+//    public String edit(Model model, @PathVariable("id") int id) {
+//        model.addAttribute("user", userDaoHiberimpl.showUserId(id));
+//        return "edit";
+//    }
+//
+//    @PatchMapping("/{id}")
+//    public String updateUser(@ModelAttribute("user")  User user,
+//                             BindingResult bindingResult,@PathVariable("id") int id) {
+//        if (bindingResult.hasErrors())
+//            return "edit";
+//        userDaoHiberimpl.updateUser(id, user);
+//        return "redirect:/users";
+//    }
+//    @DeleteMapping("/{id}")
+//    public String deleteUser(@PathVariable("id") int id) {
+//        userDaoHiberimpl.deleteUser(id);
+//        return "redirect:/users";
+//    }
 }
