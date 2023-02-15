@@ -29,7 +29,7 @@ public class WebConfig implements WebMvcConfigurer {
         return templateResolver;
     }
     @Bean
-    public SpringTemplateEngine templateEngine() {//норм
+    public SpringTemplateEngine templateEngine() {
         SpringTemplateEngine templateEngine = new SpringTemplateEngine();
         templateEngine.setTemplateResolver(templateResolver());
         templateEngine.setEnableSpringELCompiler(true);
